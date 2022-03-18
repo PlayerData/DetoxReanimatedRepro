@@ -4,7 +4,6 @@ import {
   StyleSheet,
   View,
   Dimensions,
-  Text,
   SafeAreaView,
 } from 'react-native';
 
@@ -15,12 +14,14 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+import FabMenu from './FabMenu';
 
 const windowwidth = Dimensions.get('window').width;
 const windowheight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   root: {
-    marginTop: '40%',
+    marginTop: '80%',
+    marginLeft: '40%',
   },
 
   addMenu: {
@@ -101,6 +102,13 @@ const FABButtonView = () => {
           </View>
         </View>
       </TouchableWithoutFeedback>
+      <FabMenu
+        items={[
+          {itemText: 'Item 1', id: 1},
+          {itemText: 'Item 2', id: 2},
+        ]}
+        menuOpen={open}
+      />
     </SafeAreaView>
   );
 };
