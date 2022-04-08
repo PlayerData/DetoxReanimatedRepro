@@ -1,0 +1,49 @@
+name: E2E Tests
+
+on:
+  pull_request: {}
+
+jobs:
+  e2e:
+    name: Run Detox E2E tests
+    runs-on: macos-latest
+
+    env:
+      FORCE_BUNDLING: "yes"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+          registry-url: https://npm.playerdata.co.uk/
+
+      - name: Install Dependencies
+        run: |
+          yarn install --ignore-scripts
+          brew tap wix/brew
+          brew install applesimutils
+
+      - name: Detox Build
+        run: |
+          yarn run podInstall
+          yarn run build:ios-debug
+
+      - name: Build Detox Framework
+        run: |
+          yarn run detox clean-framework-cache
+          yarn run detox build-framework-cache
+
+      - name: Run Detox Tests
+        run: |
+          yarn run test:ios-debug --workers 4 --keepLockFile --debug-synchronization 5000
+
+      - name: Detox Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: detox-artifacts
+          path: artifacts/**/*
+          retention-days: 14
