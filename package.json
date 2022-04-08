@@ -9,8 +9,8 @@
     "build:ios-release": "detox build -c ios.sim.release",
     "test:android-debug": "detox test -c android.emu.debug -l verbose",
     "test:android-release": "detox test -c android.emu.release -l verbose",
-    "test:ios-debug": "detox test -c ios.sim.debug -l verbose",
-    "test:ios-release": "detox test -c ios.sim.release -l verbose",
+    "test:ios-debug": "detox test -c ios.sim.debug -l verbose --debug-synchronization 500 --workers 2",
+    "test:ios-release": "detox test -c ios.sim.release -l verbose --debug-synchronization 500 --workers 2",
     "test:ios-none": "detox test -c ios.none -l verbose",
     "detox-server": "detox run-server",
     "clean:android": "pushd android; ./gradlew clean; popd",
@@ -22,6 +22,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-firebase/app": "^14.2.4",
+    "expo": ">=44.0.0-0 <45.0.0",
     "react": "17.0.2",
     "react-native": "0.66.4",
     "react-native-reanimated": "^2.4.1"
@@ -31,7 +33,7 @@
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
     "babel-jest": "^26.6.3",
-    "detox": "^19.4.2",
+    "detox": "^19.4.5",
     "eslint": "7.14.0",
     "jest": "^27.4.7",
     "metro-react-native-babel-preset": "^0.66.2",
