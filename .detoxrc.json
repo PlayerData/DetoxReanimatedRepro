@@ -23,6 +23,15 @@
       "build": "cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd .."
     }
   },
+  "artifacts": {
+    "plugins": {
+      "log": "all",
+      "screenshot": "all",
+      "timeline": "all",
+      "uiHierarchy": "enabled",
+      "video": "all"
+    }
+  },
   "devices": {
     "simulator": {
       "type": "ios.simulator",
