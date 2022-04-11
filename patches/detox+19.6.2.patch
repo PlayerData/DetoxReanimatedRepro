@@ -1,0 +1,179 @@
+diff --git a/node_modules/detox/.DS_Store b/node_modules/detox/.DS_Store
+new file mode 100644
+index 0000000..fe0a3af
+Binary files /dev/null and b/node_modules/detox/.DS_Store differ
+diff --git a/node_modules/detox/Detox.xcodeproj/project.pbxproj b/node_modules/detox/Detox.xcodeproj/project.pbxproj
+index 8ad048d..cf4ce4c 100644
+--- a/node_modules/detox/Detox.xcodeproj/project.pbxproj
++++ b/node_modules/detox/Detox.xcodeproj/project.pbxproj
+@@ -166,6 +166,13 @@
+ 			remoteGlobalIDString = 39DE8F5122F707DD00780546;
+ 			remoteInfo = DetoxSync;
+ 		};
++		BC6CF4032804672C0076F274 /* PBXContainerItemProxy */ = {
++			isa = PBXContainerItemProxy;
++			containerPortal = 39DC984A24BB8FCD00FFB224 /* DetoxSync.xcodeproj */;
++			proxyType = 2;
++			remoteGlobalIDString = 602F956A274528ED00BAFA74;
++			remoteInfo = DetoxSyncTests;
++		};
+ /* End PBXContainerItemProxy section */
+ 
+ /* Begin PBXCopyFilesBuildPhase section */
+@@ -580,6 +587,7 @@
+ 			isa = PBXGroup;
+ 			children = (
+ 				39DC984F24BB8FCD00FFB224 /* DetoxSync.framework */,
++				BC6CF4042804672C0076F274 /* DetoxSyncTests.xctest */,
+ 			);
+ 			name = Products;
+ 			sourceTree = "<group>";
+@@ -667,9 +675,9 @@
+ 			isa = PBXNativeTarget;
+ 			buildConfigurationList = 3947679F1DBF985400D72256 /* Build configuration list for PBXNativeTarget "Detox" */;
+ 			buildPhases = (
++				394767941DBF985400D72256 /* Headers */,
+ 				394767921DBF985400D72256 /* Sources */,
+ 				394767931DBF985400D72256 /* Frameworks */,
+-				394767941DBF985400D72256 /* Headers */,
+ 				394767951DBF985400D72256 /* Resources */,
+ 				39C3C34B1DBF9A05008177E1 /* CopyFiles */,
+ 			);
+@@ -762,6 +770,13 @@
+ 			remoteRef = 39DC984E24BB8FCD00FFB224 /* PBXContainerItemProxy */;
+ 			sourceTree = BUILT_PRODUCTS_DIR;
+ 		};
++		BC6CF4042804672C0076F274 /* DetoxSyncTests.xctest */ = {
++			isa = PBXReferenceProxy;
++			fileType = wrapper.cfbundle;
++			path = DetoxSyncTests.xctest;
++			remoteRef = BC6CF4032804672C0076F274 /* PBXContainerItemProxy */;
++			sourceTree = BUILT_PRODUCTS_DIR;
++		};
+ /* End PBXReferenceProxy section */
+ 
+ /* Begin PBXResourcesBuildPhase section */
+diff --git a/node_modules/detox/Detox.xcodeproj/project.xcworkspace/contents.xcworkspacedata b/node_modules/detox/Detox.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+new file mode 100644
+index 0000000..919434a
+--- /dev/null
++++ b/node_modules/detox/Detox.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Workspace
++   version = "1.0">
++   <FileRef
++      location = "self:">
++   </FileRef>
++</Workspace>
+diff --git a/node_modules/detox/Detox.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist b/node_modules/detox/Detox.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+new file mode 100644
+index 0000000..18d9810
+--- /dev/null
++++ b/node_modules/detox/Detox.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
++<plist version="1.0">
++<dict>
++	<key>IDEDidComputeMac32BitWarning</key>
++	<true/>
++</dict>
++</plist>
+diff --git a/node_modules/detox/Detox.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved b/node_modules/detox/Detox.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+new file mode 100644
+index 0000000..cbe6686
+--- /dev/null
++++ b/node_modules/detox/Detox.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+@@ -0,0 +1,14 @@
++{
++  "pins" : [
++    {
++      "identity" : "ochamcrest",
++      "kind" : "remoteSourceControl",
++      "location" : "https://github.com/hamcrest/OCHamcrest",
++      "state" : {
++        "branch" : "main",
++        "revision" : "df3e30d146de9a64e6a1782844b38b9d3c83461a"
++      }
++    }
++  ],
++  "version" : 2
++}
+diff --git a/node_modules/detox/DetoxSync/DetoxSync/DetoxSync/Spies/NSTimer+DTXSpy.m b/node_modules/detox/DetoxSync/DetoxSync/DetoxSync/Spies/NSTimer+DTXSpy.m
+index 8f5549c..9a82b9e 100644
+--- a/node_modules/detox/DetoxSync/DetoxSync/DetoxSync/Spies/NSTimer+DTXSpy.m
++++ b/node_modules/detox/DetoxSync/DetoxSync/DetoxSync/Spies/NSTimer+DTXSpy.m
+@@ -78,7 +78,7 @@ CFRunLoopTimerRef __detox_sync_CFRunLoopTimerCreateWithHandler(CFAllocatorRef al
+ static void (*__orig_CFRunLoopAddTimer)(CFRunLoopRef rl, CFRunLoopTimerRef timer, CFRunLoopMode mode);
+ void __detox_sync_CFRunLoopAddTimer(CFRunLoopRef rl, CFRunLoopTimerRef timer, CFRunLoopMode mode)
+ {
+-//	NSLog(@"🤦‍♂️ addTimer: %@", NS(timer));
++	NSLog(@"🤦‍♂️ addTimer: %@", NS(timer));
+ 	
+ 	id<DTXTimerProxy> trampoline = [DTXTimerSyncResource existingTimerProxyWithTimer:NS(timer)];
+ 	trampoline.runLoop = rl;
+@@ -91,7 +91,7 @@ void __detox_sync_CFRunLoopAddTimer(CFRunLoopRef rl, CFRunLoopTimerRef timer, CF
+ static void (*__orig_CFRunLoopRemoveTimer)(CFRunLoopRef rl, CFRunLoopTimerRef timer, CFRunLoopMode mode);
+ void __detox_sync_CFRunLoopRemoveTimer(CFRunLoopRef rl, CFRunLoopTimerRef timer, CFRunLoopMode mode)
+ {
+-//	NSLog(@"🤦‍♂️ removeTimer: %@", NS(timer));
++	NSLog(@"🤦‍♂️ removeTimer: %@", NS(timer));
+ 	
+ 	id<DTXTimerProxy> trampoline = [DTXTimerSyncResource existingTimerProxyWithTimer:NS(timer)];
+ 	[trampoline untrack];
+@@ -102,7 +102,7 @@ void __detox_sync_CFRunLoopRemoveTimer(CFRunLoopRef rl, CFRunLoopTimerRef timer,
+ static void (*__orig_CFRunLoopTimerInvalidate)(CFRunLoopTimerRef timer);
+ void __detox_sync_CFRunLoopTimerInvalidate(CFRunLoopTimerRef timer)
+ {
+-//	NSLog(@"🤦‍♂️ invalidate: %@", NS(timer));
++	NSLog(@"🤦‍♂️ invalidate: %@", NS(timer));
+ 	
+ 	id<DTXTimerProxy> trampoline = [DTXTimerSyncResource existingTimerProxyWithTimer:NS(timer)];
+ 	[trampoline untrack];
+@@ -113,7 +113,7 @@ void __detox_sync_CFRunLoopTimerInvalidate(CFRunLoopTimerRef timer)
+ static void (*__orig___NSCFTimer_invalidate)(NSTimer* timer);
+ void __detox_sync___NSCFTimer_invalidate(NSTimer* timer)
+ {
+-	//	NSLog(@"🤦‍♂️ invalidate: %@", timer);
++    NSLog(@"🤦‍♂️ invalidate: %@", timer);
+ 	
+ 	id<DTXTimerProxy> trampoline = [DTXTimerSyncResource existingTimerProxyWithTimer:timer];
+ 	[trampoline untrack];
+diff --git a/node_modules/detox/DetoxSync/DetoxSync/DetoxSync/Utils/_DTXTimerTrampoline.m b/node_modules/detox/DetoxSync/DetoxSync/DetoxSync/Utils/_DTXTimerTrampoline.m
+index 5235fdc..b66d945 100644
+--- a/node_modules/detox/DetoxSync/DetoxSync/DetoxSync/Utils/_DTXTimerTrampoline.m
++++ b/node_modules/detox/DetoxSync/DetoxSync/DetoxSync/Utils/_DTXTimerTrampoline.m
+@@ -162,6 +162,8 @@ const void* __DTXTimerTrampolineKey = &__DTXTimerTrampolineKey;
+ 		return;
+ 	}
+ 	
++    NSLog(@"🤦‍♂️ track: %@", _timer);
++	
+ 	_tracking = YES;
+ 	[DTXTimerSyncResource.sharedInstance trackTimerTrampoline:self];
+ }
+@@ -173,7 +175,7 @@ const void* __DTXTimerTrampolineKey = &__DTXTimerTrampolineKey;
+ 		return;
+ 	}
+ 	
+-	//	NSLog(@"🤦‍♂️ untrack: %@", _timer);
++    NSLog(@"🤦‍♂️ untrack: %@", _timer);
+ 	
+ 	[DTXTimerSyncResource.sharedInstance untrackTimerTrampoline:self];
+ 	_tracking = NO;
+diff --git a/node_modules/detox/scripts/build_framework.ios.sh b/node_modules/detox/scripts/build_framework.ios.sh
+index 77cdcca..c501ccf 100755
+--- a/node_modules/detox/scripts/build_framework.ios.sh
++++ b/node_modules/detox/scripts/build_framework.ios.sh
+@@ -12,8 +12,8 @@ detoxFrameworkPath="${detoxFrameworkDirPath}/Detox.framework"
+ 
+ 
+ function prepareAndBuildFramework () {
+-  if [ -d "$detoxRootPath"/ios ]; then
+-    detoxSourcePath="${detoxRootPath}"/ios
++  if [ -d "$detoxRootPath"/Detox ]; then
++    detoxSourcePath="${detoxRootPath}"
+     echo "Dev mode, building from ${detoxSourcePath}"
+     buildFramework "${detoxSourcePath}"
+   else

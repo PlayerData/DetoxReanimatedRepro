@@ -1,0 +1,19 @@
+diff --git a/node_modules/patch-package/dist/makePatch.js b/node_modules/patch-package/dist/makePatch.js
+index 985589e..11813fc 100644
+--- a/node_modules/patch-package/dist/makePatch.js
++++ b/node_modules/patch-package/dist/makePatch.js
+@@ -102,6 +102,14 @@ function makePatch({ packagePathSpecifier, appPath, packageManager, includePaths
+                 });
+             }
+         }
++        try {
++            spawnSafe_1.spawnSafeSync(`tar`, ["-xf", "Detox-ios-src.tbz"], {
++                cwd: `${tmpRepoNpmRoot}/node_modules/detox`,
++                logStdErrOnError: false,
++            });
++        } catch (ex) {
++            console.warn("Failed to extract Detox (this might be irrelevant for this package)");
++        }
+         const git = (...args) => spawnSafe_1.spawnSafeSync("git", args, {
+             cwd: tmpRepo.name,
+             env: Object.assign(Object.assign({}, process.env), { HOME: tmpRepo.name }),

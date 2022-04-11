@@ -19,9 +19,12 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "postinstall": "cd node_modules/Detox && tar -xf Detox-ios-src.tbz && cd ../.. && patch-package"
   },
   "dependencies": {
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
     "react": "17.0.2",
     "react-native": "0.66.4",
     "react-native-reanimated": "^2.4.1"
