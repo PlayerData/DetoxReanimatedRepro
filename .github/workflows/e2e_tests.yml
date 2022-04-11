@@ -39,9 +39,10 @@ jobs:
 
       - name: Run Detox Tests
         run: |
-          yarn run test:ios-debug --workers 4 --keepLockFile --debug-synchronization 5000
+          yarn run test:ios-debug --workers 2 --keepLockFile --debug-synchronization 5000
 
       - name: Detox Artifacts
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: detox-artifacts
