@@ -14,6 +14,8 @@
 		1787FB853A76872C4D38807A /* libPods-DetoxTemplate-DetoxTemplateTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D616F87DFFDD069B1F634E /* libPods-DetoxTemplate-DetoxTemplateTests.a */; };
 		643009FE24043073DD6A15DE /* libPods-DetoxTemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA875020D8BE788449DD47FC /* libPods-DetoxTemplate.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		BC52B6D42804368100681EFA /* Detox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC52B6D12804364200681EFA /* Detox.framework */; platformFilter = ios; };
+		BC52B6D52804368100681EFA /* Detox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC52B6D12804364200681EFA /* Detox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,7 +26,35 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = DetoxTemplate;
 		};
+		BC52B6D02804364200681EFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC52B6C52804364200681EFA /* Detox.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 394767971DBF985400D72256;
+			remoteInfo = Detox;
+		};
+		BC52B6D22804364200681EFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC52B6C52804364200681EFA /* Detox.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3928EFA51E47404900C19B6E;
+			remoteInfo = DetoxUserNotificationTests;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BC52B6D62804368200681EFA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BC52B6D52804368100681EFA /* Detox.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00E356EE1AD99517003FC87E /* DetoxTemplateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DetoxTemplateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +71,7 @@
 		9F5886BEE4526A9676E4D592 /* Pods-DetoxTemplate-DetoxTemplateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DetoxTemplate-DetoxTemplateTests.debug.xcconfig"; path = "Target Support Files/Pods-DetoxTemplate-DetoxTemplateTests/Pods-DetoxTemplate-DetoxTemplateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A18782B501F0467ADBC58A30 /* Pods-DetoxTemplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DetoxTemplate.debug.xcconfig"; path = "Target Support Files/Pods-DetoxTemplate/Pods-DetoxTemplate.debug.xcconfig"; sourceTree = "<group>"; };
 		AE768918601F36E23FC8ACD4 /* Pods-DetoxTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DetoxTemplate.release.xcconfig"; path = "Target Support Files/Pods-DetoxTemplate/Pods-DetoxTemplate.release.xcconfig"; sourceTree = "<group>"; };
+		BC52B6C52804364200681EFA /* Detox.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Detox.xcodeproj; path = ../node_modules/detox/Detox.xcodeproj; sourceTree = "<group>"; };
 		BF90BB6E53007BE49D4888CA /* Pods-DetoxTemplate-DetoxTemplateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DetoxTemplate-DetoxTemplateTests.release.xcconfig"; path = "Target Support Files/Pods-DetoxTemplate-DetoxTemplateTests/Pods-DetoxTemplate-DetoxTemplateTests.release.xcconfig"; sourceTree = "<group>"; };
 		CA875020D8BE788449DD47FC /* libPods-DetoxTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DetoxTemplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -60,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				643009FE24043073DD6A15DE /* libPods-DetoxTemplate.a in Frameworks */,
+				BC52B6D42804368100681EFA /* Detox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +148,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				BC52B6C52804364200681EFA /* Detox.xcodeproj */,
 				13B07FAE1A68108700A75B9A /* DetoxTemplate */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* DetoxTemplateTests */,
@@ -137,6 +170,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		BC52B6C62804364200681EFA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC52B6D12804364200681EFA /* Detox.framework */,
+				BC52B6D32804364200681EFA /* DetoxUserNotificationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CDA0EE31E7D3E42F21731B64 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +187,6 @@
 				9F5886BEE4526A9676E4D592 /* Pods-DetoxTemplate-DetoxTemplateTests.debug.xcconfig */,
 				BF90BB6E53007BE49D4888CA /* Pods-DetoxTemplate-DetoxTemplateTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -185,6 +226,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				53A0BB98387310FC2DDBCB68 /* [CP] Embed Pods Frameworks */,
 				02F6E7460B106C0824136025 /* [CP] Copy Pods Resources */,
+				BC52B6D62804368200681EFA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -223,6 +265,12 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BC52B6C62804364200681EFA /* Products */;
+					ProjectRef = BC52B6C52804364200681EFA /* Detox.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* DetoxTemplate */,
@@ -230,6 +278,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BC52B6D12804364200681EFA /* Detox.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Detox.framework;
+			remoteRef = BC52B6D02804364200681EFA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BC52B6D32804364200681EFA /* DetoxUserNotificationTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DetoxUserNotificationTests.xctest;
+			remoteRef = BC52B6D22804364200681EFA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
